@@ -1,3 +1,6 @@
+:root{
+  --notes:rgba(255, 228, 196, 0.5);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,35 +14,121 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Flags */
+    .flex{
+      display:flex
+    }
+    .center{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flex-row{
+      display:flex;
+    }
+/* App.js CSS */
+    .app--main{
+      display:flex;
+      flex-direction: row;
+    }
+    .app--left{
+      flex:3
+    }
+    .app--right{
+      flex:1;
+      height:100vh;
+      background-color: antiquewhite;
+    }
 
-.nav {
-  display:flex;
-  flex-direction: row;
-  width:100%;
-  gap:10px;
-  justify-content: space-around;
-  height:3rem;
-  align-items: center;
-  box-shadow: 0 0 5px  black
-}
+/* Nav.js Css */
+    .nav {
+      display:flex;
+      flex-direction: row;
+      width:100%;
+      gap:10px;
+      justify-content: space-around;
+      height:3rem;
+      align-items: center;
+      box-shadow: 0 0 5px  black
+    }
 
-.nav--item-container{
-  height:100%;
-  border-bottom:1px solid transparent;
-  display:flex;
-  align-items: center;
-  letter-spacing: .2rem;
-  transition:.5s;
-  box-shadow: 0 4px 5px -5px transparent;
-  z-index:1
-}
-.nav--item-container:hover{
-  box-shadow: 0 4px 2px -2px indianred;
-  color: indianred;
-  cursor:pointer
-}
+    .nav--item-container{
+      height:100%;
+      border-bottom:1px solid transparent;
+      display:flex;
+      align-items: center;
+      letter-spacing: .2rem;
+      transition:.5s;
+      box-shadow: 0 4px 5px -5px transparent;
+      z-index:1
+    }
+    .nav--item-container:hover{
+      box-shadow: 0 4px 2px -2px indianred;
+      color: indianred;
+      cursor:pointer
+    }
 
-.nav--item-container>h4 {
-  margin:0;
-  pointer-events: none;
-}
+    .nav--item-container>h4 {
+      margin:0;
+      pointer-events: none;
+    }
+
+/* Shopping CSS */
+    .shopping--container{
+      margin:15px;
+      flex:1
+    }
+    .shopping--item-container{
+      border-bottom:1px solid black;
+      font-size:25px;
+      display:flex;
+      flex-direction: row;
+      padding: 5px 0 5px 20px;
+      background-color:var(--notes) ;
+    }
+    .shopping--checkbox{
+      accent-color: indianred;
+      height:16px;
+      width:16px;
+    }
+    .shopping--item-column{
+      padding-left:10px
+    }
+    .shopping--add-item-input{
+      border:none;
+      font-size:25px;
+      min-width: 100px;
+      flex:1;
+      background-color: transparent ;
+      margin-left:10px;
+    }
+    .shopping--add-item-input::placeholder{
+      color:rgb(205, 92, 92, 0.8);
+    }
+    .shopping--add-item-input:focus{
+      outline:none;
+      border:none
+    }
+    .shopping--add-item-input[type='date']::-webkit-calendar-picker-indicator{
+      color:indianred
+    }
+    .shopping--add-item-button{
+      margin-left:4px;
+      padding:0;
+      background-color: transparent;
+      border:0;
+      fill:gray;
+      transition:0.5s
+    }
+    .shopping--add-item-button:hover{
+      fill:indianred;
+      background-color: rgb(205, 92, 92, 0.2);
+    }
+    .shopping--delete-btn {
+      font-size:25px;
+      margin: 10px;
+      color: indianred;
+      border:1px solid indianred;
+      border-radius:5px;
+      background-color: var(--notes);
+      }

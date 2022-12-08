@@ -3,21 +3,60 @@ import Nav from './Nav'
 import ShoppingList from './ShoppingList'
 
 export default function App() {
-  // State and function describing which section to display
-  const[shown,setShown] = React.useState('')
-  function handleShown(event) {
-    setShown(event.target.id)
-    console.log(shown)
-  }
+
+  // State:
+
+    // State and function describing which section to display
+    const[shown,setShown] = React.useState('')
+
+
+  // Functions: 
+
+      // Adding an item to DB
+      async function addItem(event,type,data){
+        console.log(type)
+        console.log(data)
+        event.preventDefault()
+      }
+
+      // Show Tab
+      function handleShown(event) {
+        setShown(event.target.id)
+        console.log(shown)
+      }
+      
+      // Delete item set from db
+      function deleteSelected(items) {
+        items.forEach(item => {
+          const requestOptions = {
+            method: 'DELETE',
+            body: item
+          }
+          fetch(`/api/task/delete/${item}`, requestOptions)
+          .then(res => res.json())
+          .then(data => console.log(data))
+        // document.location.reload()
+        })
+      }
+
+  // Idea: set localStorage to shown and then initial
+  // state to localStorage -> same tab is open on refresh
 
   return (
     <div>
       <Nav show={handleShown}/>
-      {shown === 'Shopping' && <ShoppingList />}
-      {shown === 'Homework' && <div>Homework</div>}
-      {shown === 'Bills' && <div>Bills</div>}
-      {shown === 'Plans' && <div>Plans</div>}
-      {shown === 'Other' && <div>Other</div>}
+      <div className='app--main'>
+        <div className='app--left'>
+          {shown === 'Shopping' && <ShoppingList deleteSelected={deleteSelected} addItem={addItem}/>}
+          {shown === 'Homework' && <div>Homework</div>}
+          {shown === 'Bills' && <div>Bills</div>}
+          {shown === 'Plans' && <div>Plans</div>}
+          {shown === 'Other' && <div>Other</div>}
+          </div>
+        <div className='app--right'>
+          Here some content
+        </div>
+      </div>
     </div>
   )
 }
