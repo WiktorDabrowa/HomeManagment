@@ -24,3 +24,11 @@ def getTask(request,id):
   task = Task.objects.get(id=id)
   serializer = TaskSerializer(task)
   return Response(serializer.data)
+
+@api_view(['DELETE'])
+def deleteTask(request,id):
+  print(id)
+  task = Task.objects.get(id=id)
+  task.delete()
+  return Response(f'Task {id} deleted')
+  
