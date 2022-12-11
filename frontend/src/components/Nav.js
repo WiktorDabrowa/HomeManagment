@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Nav(props) {
-  const [state,setState] = React.useState('')
 
   return (
     <nav className='nav'>

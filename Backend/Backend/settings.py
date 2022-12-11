@@ -127,3 +127,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:3000']
+
+REST_FRAMEWORK = {
+    'DATE_INPUT_FORMATS': ["%Y-%m-%d", ],
+    'DATETIME_FORMAT': '%Y-%m-%d %H',
+    'DATE_FORMAT': '%Y-%m-%d %H'
+}
+
