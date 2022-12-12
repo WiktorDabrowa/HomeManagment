@@ -59,6 +59,7 @@ export default function App() {
       }
       // Delete one item from db
       function deleteItem(item_id) {
+        console.log('deleting')
         const requestOptions = {
           method: 'DELETE',
           body: item_id
