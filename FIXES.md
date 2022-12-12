@@ -1,0 +1,1 @@
+# Items in Nav should be highlighted based on App`s shown state

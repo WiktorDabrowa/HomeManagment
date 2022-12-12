@@ -10,6 +10,7 @@ export default function AddShoppingItem(props) {
   })
   function change(event) {
     setData(prevData => {
+      console.log(data)
       return {
         ...prevData,
         [event.target.name]:event.target.value

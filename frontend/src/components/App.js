@@ -1,20 +1,33 @@
 import React from 'react'
 import Nav from './Nav'
 import ShoppingList from './ShoppingList'
+import Tab from './GenericTab'
+
 
 export default function App() {
+  // State:
+  
+  // State and function describing which section to display
+  const[shown,setShown] = React.useState('')
+  
   // Local Storage:
     
-  // State:
-
-    // State and function describing which section to display
-    const[shown,setShown] = React.useState('Shopping')
-
-
+    // 
+    React.useEffect(() => {
+      const shownTab = window.localStorage.getItem('shownTab');
+      if (shownTab !== null) {setShown(JSON.parse(shownTab))}
+      console.log(`Got from localStorage : ${shownTab}`)
+    },[])
+    // Setting Local Storage to shown state
+    React.useEffect(() => {
+      window.localStorage.setItem('shownTab', JSON.stringify(shown))
+      console.log(`Set the localStorage to : ${shown}`)
+    }, [shown])
+  
   // Functions: 
 
       // Adding an item to DB
-      async function addItem(event,data){
+      async function addItem(event, data){
         const requestOptions = {
           method: 'POST',
           headers: {
@@ -26,13 +39,11 @@ export default function App() {
         .then(res => res.json())
         .then(response => console.log(response))
       }
-
       // Show Tab
       function handleShown(event) {
         setShown(event.target.id)
         console.log(shown)
       }
-      
       // Delete item set from db
       function deleteSelected(items) {
         items.forEach(item => {
@@ -46,7 +57,17 @@ export default function App() {
         document.location.reload()
         })
       }
-
+      // Delete one item from db
+      function deleteItem(item_id) {
+        const requestOptions = {
+          method: 'DELETE',
+          body: item_id
+        }
+        fetch(`/api/task/delete/${item_id}`, requestOptions)
+        .then(res => res.json())
+        .then(data => console.log(data))
+        document.location.reload()
+      }
   // Idea: set localStorage to shown and then initial
   // state to localStorage -> same tab is open on refresh
 
@@ -55,14 +76,15 @@ export default function App() {
       <Nav show={handleShown}/>
       <div className='app--main'>
         <div className='app--left'>
+          {shown === 'Home' && <div>Home</div>}
           {shown === 'Shopping' && <ShoppingList deleteSelected={deleteSelected} addItem={addItem}/>}
-          {shown === 'Homework' && <div>Homework</div>}
-          {shown === 'Bills' && <div>Bills</div>}
-          {shown === 'Plans' && <div>Plans</div>}
-          {shown === 'Other' && <div>Other</div>}
+          {shown === 'Homework' && <Tab deleteItem={deleteItem} tabName='Homework' />}
+          {shown === 'Bills' && <Tab deleteItem={deleteItem} tabName='Bills' />}
+          {shown === 'Plans' && <Tab deleteItem={deleteItem} tabName='Plans' />}
+          {shown === 'Other' && <Tab deleteItem={deleteItem} tabName='Other' />}
           </div>
         <div className='app--right'>
-          Here some content
+          TBA
         </div>
       </div>
     </div>

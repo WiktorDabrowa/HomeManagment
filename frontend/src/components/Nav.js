@@ -4,7 +4,9 @@ export default function Nav(props) {
 
   return (
     <nav className='nav'>
-      
+          <div onClick={props.show} id='Home' className='nav--item-container'>
+            <h4>Home</h4>
+          </div>
           <div onClick={props.show} id='Shopping' className='nav--item-container'>
             <h4>Shopping</h4>
           </div>

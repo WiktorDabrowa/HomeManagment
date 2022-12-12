@@ -132,3 +132,67 @@ code {
       border-radius:5px;
       background-color: var(--notes);
       }
+
+  /* Homework css */
+  .tab--container{
+    margin:20px;
+    padding:20px;
+    display:flex;
+    background-color: var(--notes);
+    gap:20px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+  }
+  .tab--task{
+    background-color: white;
+    width:300px;
+    border:1px solid indianred;
+    border-radius: 10px;
+    padding:15px;
+    display:flex;
+    flex-direction: column;
+    position:relative
+  }
+  .tab--task-delete-btn{
+    position:absolute;
+    right:5px;
+    top:10px;
+    background-color: transparent;
+    border:none;
+    color:red;
+    transition:1s
+  }
+  .tab--task-delete-btn:hover{
+    cursor:pointer;
+    color:darkred;
+    transform: scale(1.5);
+  }
+  .tab--task > h2 {
+    margin:0 0 10px 0
+  }
+  .tab--task-add{
+    background-color: rgba(2, 165, 2, 0.344);
+    color:green;
+    justify-content: center;
+    align-items: center;
+    transition:0.5s;
+    opacity:0.5
+  }
+  .tab--task-add-text{
+    display:flex;
+    font-size: 25px;
+    align-items: center;
+    
+  }
+  .tab--task-add:hover{
+    opacity: 1;
+    cursor:pointer
+  }
+  /* Bills css */
+  .Bills--container{
+
+  }
+  /* Plans css */
+
+
+  /* Other css */

@@ -16,8 +16,9 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getTasks(request, type):
-  task = Task.objects.filter(type=type)
-  serializer = TaskSerializer(task, many=True)
+  print('Here')
+  tasks = Task.objects.filter(type=type)
+  serializer = TaskSerializer(tasks, many=True)
   return Response(serializer.data)
 
 @api_view(['GET'])
