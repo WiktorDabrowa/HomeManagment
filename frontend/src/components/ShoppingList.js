@@ -17,7 +17,6 @@ export default function ShoppingList(props) {
       return(state)
     })
   }
-  
   React.useEffect( () => {
     fetch('/api/tasks/shopping')
     .then(res => res.json())

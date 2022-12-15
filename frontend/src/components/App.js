@@ -28,6 +28,7 @@ export default function App() {
 
       // Adding an item to DB
       async function addItem(event, data){
+        console.log('adding item')
         const requestOptions = {
           method: 'POST',
           headers: {
@@ -59,7 +60,6 @@ export default function App() {
       }
       // Delete one item from db
       function deleteItem(item_id) {
-        console.log('deleting')
         const requestOptions = {
           method: 'DELETE',
           body: item_id
@@ -79,13 +79,15 @@ export default function App() {
         <div className='app--left'>
           {shown === 'Home' && <div>Home</div>}
           {shown === 'Shopping' && <ShoppingList deleteSelected={deleteSelected} addItem={addItem}/>}
-          {shown === 'Homework' && <Tab deleteItem={deleteItem} tabName='Homework' />}
-          {shown === 'Bills' && <Tab deleteItem={deleteItem} tabName='Bills' />}
-          {shown === 'Plans' && <Tab deleteItem={deleteItem} tabName='Plans' />}
-          {shown === 'Other' && <Tab deleteItem={deleteItem} tabName='Other' />}
+          {shown === 'Homework' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Homework' />}
+          {shown === 'Bills' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Bills' />}
+          {shown === 'Plans' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Plans' />}
+          {shown === 'Other' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Other' />}
           </div>
         <div className='app--right'>
-          TBA
+          Calendar widget;
+          Closest deadlines;
+          ?
         </div>
       </div>
     </div>

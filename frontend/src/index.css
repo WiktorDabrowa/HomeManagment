@@ -9,6 +9,10 @@
   from {transform: rotateY(180deg);}
   to {transform:rotateY(0)}
 }
+@keyframes addTaskAppear {
+  from {transform: scale(0.2)}
+  to { transform: scale(2);}
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -23,6 +27,9 @@ code {
     monospace;
 }
 /* Flags */
+    .blur{
+      filter: blur(5px)
+    }
     .flex{
       display:flex
     }
@@ -57,7 +64,8 @@ code {
       justify-content: space-around;
       height:3rem;
       align-items: center;
-      box-shadow: 0 0 5px  black
+      box-shadow: 0 0 5px  black;
+      background-image:linear-gradient(to right, violet, rgb(127, 0, 139));
     }
 
     .nav--item-container{
@@ -98,9 +106,11 @@ code {
       accent-color: indianred;
       height:16px;
       width:16px;
+      
     }
     .shopping--item-column{
-      padding-left:10px
+      padding-left:10px;
+      pointer-events: none;
     }
     .shopping--add-item-input{
       border:none;
@@ -131,6 +141,7 @@ code {
     .shopping--add-item-button:hover{
       fill:indianred;
       background-color: rgb(205, 92, 92, 0.2);
+      cursor:pointer
     }
     .shopping--delete-btn {
       font-size:25px;
@@ -139,7 +150,14 @@ code {
       border:1px solid indianred;
       border-radius:5px;
       background-color: var(--notes);
+      transition:0.8s
       }
+    .shopping--delete-btn:hover{
+      color:var(--notes);
+      background-color: indianred;
+      border-color: var(--notes);
+      cursor:pointer
+    }
 
   /* Homework css */
   .tab--container{
@@ -150,6 +168,7 @@ code {
     gap:20px;
     flex-wrap: wrap;
     border-radius: 10px;
+    transition: filter 1s
   }
   .tab--task{
     background-color: white;
@@ -226,7 +245,8 @@ code {
     justify-content: center;
     align-items: center;
     transition:0.5s;
-    opacity:0.5
+    opacity:0.5;
+    position:relative
   }
   .tab--task-add-text{
     display:flex;
@@ -239,11 +259,62 @@ code {
     cursor:pointer
   }
   
-  /* Bills css */
-  .Bills--container{
-
+  /* AddTask */
+  .addTask--container {
+    border:1px solid black;
+    position:fixed;
+    z-index: 1;
+    left:calc(37.5vw - 150px);
+    top:calc(50vh - 100px);
+    animation: addTaskAppear 1s forwards
   }
-  /* Plans css */
-
-
-  /* Other css */
+  .addTask--form {
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+    
+    height:100%
+  }
+  .addTask--form > * {
+    border:none;
+    
+  }
+  .addTask--form > *:focus{
+    border:none;
+    outline:none;
+    border-radius:5px;
+    padding-left:10px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  }
+  .addTask--form > input {
+    flex:1
+  }
+  .addTask--form >input[name='name'] {
+    font-size:20px
+  }
+  .addTask--form > input[type='date'] {
+    width:fit-content
+  }
+  .addTask--form > textarea {
+    resize:none;
+    flex:7
+  }
+  .addTask--form-btn {
+    background-color: rgba(2, 165, 2, 0.344);
+    color:green;
+    width:30px;
+    height:30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    bottom:0.5em;
+    right:0.5em;
+    border-radius: 15px;
+    opacity:0.6;
+    transition:0.7s
+  }
+  .addTask--form-btn:hover{
+    opacity:1;
+    cursor:pointer
+  }
