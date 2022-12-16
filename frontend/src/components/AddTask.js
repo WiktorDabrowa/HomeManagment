@@ -19,7 +19,7 @@ export default function AddTask(props) {
   return (
     <div className='addTask--container tab--task'>
       <form onSubmit={(event) => props.addItem(event,data)} onChange={change} className='addTask--form'>
-        <input value={data.name} name='name' type='text' placeholder='Name' />
+        <input required value={data.name} name='name' type='text' placeholder='Name' />
         <input value={data.deadline} name='deadline' type='date' placeholder='Date' />
         <textarea value={data.notes} name='notes' placeholder='Notes' />
         <button className='addTask--form-btn'>

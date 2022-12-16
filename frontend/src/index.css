@@ -47,12 +47,18 @@ code {
       flex-direction: row;
     }
     .app--left{
-      flex:3
+      flex:4;
     }
     .app--right{
       flex:1;
-      height:100vh;
+      height:80vh;
+      margin:20px 0 20px 20px;
       background-color: antiquewhite;
+      position:sticky;
+      top:20px;
+      border-radius:10px;
+      padding:10px;
+      overflow-y:scroll
     }
 
 /* Nav.js Css */
@@ -66,6 +72,7 @@ code {
       align-items: center;
       box-shadow: 0 0 5px  black;
       background-image:linear-gradient(to right, violet, rgb(127, 0, 139));
+      color:white
     }
 
     .nav--item-container{
@@ -80,7 +87,7 @@ code {
     }
     .nav--item-container:hover{
       box-shadow: 0 4px 2px -2px indianred;
-      color: indianred;
+      color: rgb(49, 121, 136);
       cursor:pointer
     }
 
@@ -165,7 +172,7 @@ code {
     padding:20px;
     display:flex;
     background-color: var(--notes);
-    gap:20px;
+    justify-content: space-between;
     flex-wrap: wrap;
     border-radius: 10px;
     transition: filter 1s
@@ -181,6 +188,7 @@ code {
     flex-direction: column;
     position:relative;
     perspective: 1000px;
+    margin-top:30px
   }
   .flip-card-inner{
     position:relative;
@@ -264,7 +272,7 @@ code {
     border:1px solid black;
     position:fixed;
     z-index: 1;
-    left:calc(37.5vw - 150px);
+    left:calc(40vw - 150px);
     top:calc(50vh - 100px);
     animation: addTaskAppear 1s forwards
   }

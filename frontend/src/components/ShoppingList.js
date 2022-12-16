@@ -4,6 +4,7 @@ import AddShoppingItem from './AddShoppingItem'
 export default function ShoppingList(props) {
   const [shoppingListItems,setShoppingListItems] = React.useState([])
   const [selected,setSelected] = React.useState(new Set())
+
   console.log(props)
   function select(event) {
     setSelected(prevSelected => {
@@ -27,7 +28,7 @@ export default function ShoppingList(props) {
 
   const shoppingItems = shoppingListItems.map(item => {
     return (
-      <div key={item.id} className='shopping--item-container'>
+      <div key={item.id.toString()} className='shopping--item-container'>
         <form className='flex center'onChange={select}>
         <input className='shopping--checkbox' type='checkbox' name={item.id}/>
         </form>

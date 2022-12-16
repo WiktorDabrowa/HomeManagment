@@ -26,13 +26,13 @@ export default function Tab(props) {
   // Create elements for page
   const elements = items.map(item => {
     return (
-      <FlipCard item={item} deleteItem={props.deleteItem}/>
+      <FlipCard key={item.id.toString()} item={item} deleteItem={props.deleteItem}/>
     )
   })
 
   return(
     <div>
-      <div onClick = {addingItem ? addTask : ''} className={addingItem ? 'tab--container blur' : 'tab--container'}>
+      <div onClick={addingItem ? addTask : ''} className={addingItem ? 'tab--container blur' : 'tab--container'}>
         {elements}
         <div onClick={addTask} className='tab--task tab--task-add'>
           <div className='tab--task-add-text'>

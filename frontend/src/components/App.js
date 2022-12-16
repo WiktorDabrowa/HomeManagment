@@ -2,6 +2,7 @@ import React from 'react'
 import Nav from './Nav'
 import ShoppingList from './ShoppingList'
 import Tab from './GenericTab'
+import HandyMenu from './HandyMenu'
 
 
 export default function App() {
@@ -86,8 +87,7 @@ export default function App() {
           </div>
         <div className='app--right'>
           Calendar widget;
-          Closest deadlines;
-          ?
+          <HandyMenu />
         </div>
       </div>
     </div>
