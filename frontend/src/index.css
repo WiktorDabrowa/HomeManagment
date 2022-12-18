@@ -51,8 +51,8 @@ code {
     }
     .app--right{
       flex:1;
-      height:80vh;
-      margin:20px 0 20px 20px;
+      height:90vh;
+      margin:20px 0 20px;
       background-color: antiquewhite;
       position:sticky;
       top:20px;
@@ -71,8 +71,6 @@ code {
       height:3rem;
       align-items: center;
       box-shadow: 0 0 5px  black;
-      background-image:linear-gradient(to right, violet, rgb(127, 0, 139));
-      color:white
     }
 
     .nav--item-container{
@@ -85,9 +83,10 @@ code {
       box-shadow: 0 4px 5px -5px transparent;
       z-index:1
     }
-    .nav--item-container:hover{
+  
+    .nav--item-container:hover, .nav--item-container.shown{
       box-shadow: 0 4px 2px -2px indianred;
-      color: rgb(49, 121, 136);
+      color: indianred;
       cursor:pointer
     }
 
@@ -227,19 +226,25 @@ code {
     color:darkred;
     background-color: rgba(255, 0, 0, 0.248);
   }
-  .tab--task-delete-btn{
+  .tab--task-btn{
     position:absolute;
-    right:-5px;
+    
     top:0px;
     background-color: transparent;
     border:none;
     color:red;
-    transition:1s
+    transition:0.5s
   }
-  .tab--task-delete-btn > svg {
+  .tab--task-btn.edit{
+    left:-5px;
+  }
+  .tab--task-btn.delete{
+    right:-5px
+  }
+  .tab--task-btn > svg {
     pointer-events: none;
   }
-  .tab--task-delete-btn:hover{
+  .tab--task-btn:hover{
     cursor:pointer;
     color:darkred;
     transform: scale(1.5);
@@ -307,6 +312,10 @@ code {
     resize:none;
     flex:7
   }
+  .addTask--form > input[disabled]{
+    background-color:transparent;
+    color:black
+  }
   .addTask--form-btn {
     background-color: rgba(2, 165, 2, 0.344);
     color:green;
@@ -324,5 +333,63 @@ code {
   }
   .addTask--form-btn:hover{
     opacity:1;
-    cursor:pointer
+    cursor:pointer;
+    border-radius: 10px;
+  }
+  .addTask--container-close-btn {
+    position:absolute;
+    top:0.5em;
+    right:0.5em;
+    border:none;
+    width:30px;
+    height:30px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 0, 0, 0.344);
+    color:red;
+    border-radius: 15px;
+    transition:0.5s;
+    opacity:0.6
+
+  }
+  .addTask--container-close-btn:hover{
+    opacity:1;
+    cursor:pointer;
+    border-radius:10px;
+  }
+  /* Handy */
+  .handy--container{
+    transition:0.5s;
+    white-space:nowrap;
+    padding-top:30px
+  }
+  .minimized {
+    flex:0;
+    padding-left:10px;
+    width:0;
+    overflow-y:hidden;
+  }
+  .handy--minimize-btn {
+    position:absolute;
+    top:.5em;
+    left:0.5em;
+    background-color: transparent;
+    border:none
+  }
+  .handy--minimize-btn>svg {
+    pointer-events: none;
+  }
+  .handy--closest-container{
+    display:flex;
+    flex-direction: column;
+    gap:0.25em;
+    position:relative
+  }
+  .handy--closest-item{
+    padding:0.25em;
+    border:1px solid black;
+    height:45px;
+    word-spacing: 1px;
+
   }

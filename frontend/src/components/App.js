@@ -75,7 +75,7 @@ export default function App() {
 
   return (
     <div>
-      <Nav show={handleShown}/>
+      <Nav shown = {shown} show={handleShown}/>
       <div className='app--main'>
         <div className='app--left'>
           {shown === 'Home' && <div>Home</div>}
@@ -85,10 +85,7 @@ export default function App() {
           {shown === 'Plans' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Plans' />}
           {shown === 'Other' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Other' />}
           </div>
-        <div className='app--right'>
-          Calendar widget;
-          <HandyMenu />
-        </div>
+        <HandyMenu />
       </div>
     </div>
   )

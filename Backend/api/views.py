@@ -9,11 +9,16 @@ import json
 
 @api_view(['GET'])
 def getRoutes(request):
-  routes = [ {
-    'index':'key'
-  } ]
+  routes ={
+    '5 Closest tasks':'/closest_tasks',
+    'Shopping':'/tasks/shopping',
+    'Bills':'/tasks/bills',
+    'Homework':'/tasks/homework',
+    'Plans':'/tasks/plans',
+    'Other':'/tasks/other',
+    'Single Task':'task/{task id}'
+  }
   return Response(routes)
-
 @api_view(['GET'])
 def getClosestTasks(request):
   tasks = Task.objects.all().order_by('deadline')
@@ -24,7 +29,6 @@ def getClosestTasks(request):
   
 @api_view(['GET'])
 def getTasks(request, type):
-  print('Here')
   tasks = Task.objects.filter(type=type)
   serializer = TaskSerializer(tasks, many=True)
   return Response(serializer.data)

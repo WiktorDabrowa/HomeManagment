@@ -1,5 +1,6 @@
 import React from "react";
 import AddTask from "./AddTask";
+import EditTask from './EditTask';
 import FlipCard from "./FlipCard";
 
 
@@ -8,6 +9,7 @@ export default function Tab(props) {
 
   const[items,setItems] = React.useState([])
   const[addingItem, setAddingItem] = React.useState(false)
+  const[editingItem, setEditingItem] = React.useState(false)
 
   // Fetch data from server and set it to state:
   React.useEffect( () => {
@@ -17,18 +19,23 @@ export default function Tab(props) {
     console.log('got items')
   },[])
   console.log(items)
-
-  // Add task to DB
-  function addTask() {
-    setAddingItem( !addingItem )
-  }
   
-  // Create elements for page
-  const elements = items.map(item => {
-    return (
-      <FlipCard key={item.id.toString()} item={item} deleteItem={props.deleteItem}/>
-    )
-  })
+  // Functions :
+    // Edit Item
+    function editTask() {
+        setEditingItem(!editingItem)
+    }
+    // Add task to DB
+    function addTask() {
+        setAddingItem( !addingItem )
+    }
+    // Create elements for page
+    const elements = items.map(item => {
+        return (
+        <FlipCard key={item.id.toString()} item={item} deleteItem={props.deleteItem}/>
+        )
+    })
+
 
   return(
     <div>
@@ -43,7 +50,7 @@ export default function Tab(props) {
           </div>
         </div>
       </div>
-      {addingItem && <AddTask addItem={props.addItem} type={props.tabName.toLowerCase()}/>}
+      {addingItem && <AddTask close={addTask} addItem={props.addItem} type={props.tabName.toLowerCase()}/>}
     </div>
   )
 }
