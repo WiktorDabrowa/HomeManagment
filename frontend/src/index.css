@@ -21,6 +21,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+pre{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -189,10 +194,11 @@ code {
     perspective: 1000px;
     margin-top:30px
   }
+  .tab--task.redBg{
+    background-color: rgb(205, 92, 92, 0.15);
+  }
   .flip-card-inner{
     position:relative;
-    width:100%;
-    height:100%;
     text-align: center;
     transition:transform 0.8s;
     transform-style:preserve-3d;
@@ -202,10 +208,16 @@ code {
   }
   .flip-card-front, .flip-card-back{
     position:absolute;
-    width:100%;
-    height:100%;
+    display:flex;
+    flex-direction: column;
+    width:90%;
+    height:85%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+  }
+  .flip-card-front h2{
+    color:indianred;
+    margin-bottom:0
   }
   .flip-card-back{
     transform:rotateY(180deg);
@@ -247,7 +259,7 @@ code {
   .tab--task-btn:hover{
     cursor:pointer;
     color:darkred;
-    transform: scale(1.5);
+    transform: rotate(270deg);
   }
   .tab--task > h2 {
     margin:0 0 10px 0
@@ -271,6 +283,15 @@ code {
     opacity: 1;
     cursor:pointer
   }
+  .tab--task-item{
+    flex:1
+  }
+  .tab--task-item-notes{
+    margin-top:1px;
+    overflow-y: auto;
+    margin:0
+  }
+  
   
   /* AddTask */
   .addTask--container {
@@ -384,12 +405,32 @@ code {
     display:flex;
     flex-direction: column;
     gap:0.25em;
-    position:relative
+    position:relative;
+    gap:10px
   }
   .handy--closest-item{
+    position:relative;
     padding:0.25em;
-    border:1px solid black;
+    border-radius:5px;
+    background-color: white;
     height:45px;
     word-spacing: 1px;
-
+    padding:5px
+  }
+  .handy--closest-item-delete-btn{
+    position:absolute;
+    right:0;
+    background-color: transparent;
+    border:none;
+    top:5px
+  }
+  .handy--closest-type{
+    font-size: 30px;
+    margin-left:10px;
+    font-weight: 500;
+    font-style:italic;
+    color:rgb(205, 92, 92, 0.3);
+    position:absolute;
+    right:20px;
+    top:5px
   }
