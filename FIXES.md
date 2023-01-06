@@ -4,8 +4,8 @@
 Web Dev Simplified
 
 # Generic Tab 
-  - Deadline date formatting
   - handle overflow
+  - EDIT TASK
 
 # Home Tab
   - Greetings, statistics, closing deadlines

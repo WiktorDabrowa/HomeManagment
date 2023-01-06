@@ -70,8 +70,6 @@ export default function App() {
         .then(data => console.log(data))
         document.location.reload()
       }
-  // Idea: set localStorage to shown and then initial
-  // state to localStorage -> same tab is open on refresh
 
   return (
     <div>
@@ -85,7 +83,7 @@ export default function App() {
           {shown === 'Plans' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Plans' />}
           {shown === 'Other' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Other' />}
           </div>
-        <HandyMenu />
+        <HandyMenu deleteItem={deleteItem}/>
       </div>
     </div>
   )

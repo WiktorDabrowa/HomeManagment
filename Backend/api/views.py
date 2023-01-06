@@ -21,7 +21,7 @@ def getRoutes(request):
   return Response(routes)
 @api_view(['GET'])
 def getClosestTasks(request):
-  tasks = Task.objects.all().order_by('deadline')
+  tasks = Task.objects.all().exclude(deadline = None).order_by('deadline')
   tasks = tasks[:5]
   serializer = TaskSerializer(tasks, many=True)
   print(tasks)

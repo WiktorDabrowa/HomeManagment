@@ -2,17 +2,22 @@ import React from 'react'
 
 export default function FlipCard(props) {
   const today = new Date()
-  const deadline = new Date(props.item.deadline.slice(0,10))
-  const daysLeft = Math.round(((deadline.getTime()-today.getTime())/(1000*3600*24)))
+  let deadline = (props.item.deadline ? props.item.deadline : 0 )
   
 
-  function flip(event) {
-    const flipcard = event.target.parentElement.parentElement
+  if (deadline) {
+    deadline = new Date(deadline.slice(0,4), deadline.slice(5,7), deadline.slice(7,10))
+
+  } 
+
+
+  function flip() {
+    const flipcard = document.getElementById(`flip-card-${props.item.id}`)
     flipcard.classList.toggle('flipped')
   }
-  
+
   return (
-    <div className={today < deadline ? 'tab--task flip-card-inner': 'tab--task flip-card-inner redBg'}>
+    <div id={`flip-card-${props.item.id}`}className={today < deadline || deadline == 0 ? 'tab--task flip-card-inner' : 'tab--task flip-card-inner redBg'}>
           <div className='flip-card-front'>
             <button onClick={flip} className='tab--task-btn center delete'>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
@@ -26,7 +31,7 @@ export default function FlipCard(props) {
             </button>
             <div className='tab--task-item'>
               <h2>{props.item.name}</h2>
-              <small><b>{props.item.deadline.slice(0,10)} {daysLeft == 1 ? `(${daysLeft} Day left)` : `(${daysLeft} Days left)`}</b></small>
+              <small><b>{deadline != 0 ? `${deadline.getDate()}/${deadline.getMonth()+1}/${deadline.getFullYear()}` : ''}</b></small>
             </div>
             <pre className='tab--task-item-notes tab--task-item'>{props.item.notes}</pre>
           </div>
@@ -37,7 +42,7 @@ export default function FlipCard(props) {
               <button onClick={flip} className='flip-card-btn'>No</button>
             </div>
           </div>
-        
+
       </div>
   )
 }

@@ -197,6 +197,7 @@ code {
   .tab--task.redBg{
     background-color: rgb(205, 92, 92, 0.15);
   }
+  
   .flip-card-inner{
     position:relative;
     text-align: center;
@@ -259,7 +260,7 @@ code {
   .tab--task-btn:hover{
     cursor:pointer;
     color:darkred;
-    transform: rotate(270deg);
+    transform: rotate(270deg) scale(1.5);
   }
   .tab--task > h2 {
     margin:0 0 10px 0
@@ -415,14 +416,26 @@ code {
     background-color: white;
     height:45px;
     word-spacing: 1px;
-    padding:5px
+    padding:5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .handy--closest-item.redBg{
+    background-color: rgb(205, 92, 92, 0.15);
   }
   .handy--closest-item-delete-btn{
     position:absolute;
     right:0;
     background-color: transparent;
     border:none;
-    top:5px
+    top:5px;
+    transition:0.5s;
+    color:red
+  }
+  .handy--closest-item-delete-btn:hover{
+    transform: scale(1.5);
+    color:darkred
   }
   .handy--closest-type{
     font-size: 30px;
