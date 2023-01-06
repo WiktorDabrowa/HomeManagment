@@ -19,6 +19,9 @@ def getRoutes(request):
     'Single Task':'task/{task id}'
   }
   return Response(routes)
+@api_view(['POST'])
+def editTask(request, id):
+  print(id)
 @api_view(['GET'])
 def getClosestTasks(request):
   tasks = Task.objects.all().exclude(deadline = None).order_by('deadline')
@@ -33,11 +36,26 @@ def getTasks(request, type):
   serializer = TaskSerializer(tasks, many=True)
   return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 def getTask(request,id):
-  task = Task.objects.get(id=id)
-  serializer = TaskSerializer(task)
-  return Response(serializer.data)
+  if request.method == 'GET':
+    task = Task.objects.get(id=id)
+    serializer = TaskSerializer(task)
+    return Response(serializer.data)
+  elif request.method == 'PUT':
+    print(f'editing item {id}')
+    data = json.loads(request.body)
+    serializer = TaskSerializer(data=data)
+    item = Task.objects.get(id=id)
+    if serializer.is_valid():
+      print('Here')
+      item.notes = data['notes']
+      item.name = data['name']
+      item.deadline = data['deadline']
+      item.save()
+      return Response(f'item {id} edited')
+    return Response(serializer.errors)
+    
 
 @api_view(['DELETE'])
 def deleteTask(request,id):
@@ -50,7 +68,6 @@ def deleteTask(request,id):
 def addTask(request):
   data = json.loads(request.body)
   serializer = TaskSerializer(data=data)
-  print(serializer)
   
   if serializer.is_valid():
     Task.objects.create(

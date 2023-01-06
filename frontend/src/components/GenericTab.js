@@ -10,20 +10,22 @@ export default function Tab(props) {
   const[items,setItems] = React.useState([])
   const[addingItem, setAddingItem] = React.useState(false)
   const[editingItem, setEditingItem] = React.useState(false)
+  const[itemEdited, setitemEdited] = React.useState('')
+
 
   // Fetch data from server and set it to state:
   React.useEffect( () => {
     fetch(`/api/tasks/${props.tabName.toLowerCase()}`)
     .then(res => res.json())
     .then(items => setItems(items))
-    console.log('got items')
   },[])
-  console.log(items)
+  
   
   // Functions :
     // Edit Item
-    function editTask() {
+    function editTask(item) {
         setEditingItem(!editingItem)
+        setitemEdited(item)
     }
     // Add task to DB
     function addTask() {
@@ -32,7 +34,7 @@ export default function Tab(props) {
     // Create elements for page
     const elements = items.map(item => {
         return (
-        <FlipCard key={item.id.toString()} item={item} deleteItem={props.deleteItem}/>
+        <FlipCard key={item.id.toString()} item={item} deleteItem={props.deleteItem} editTask={editTask}/>
         )
     })
 
@@ -51,6 +53,7 @@ export default function Tab(props) {
         </div>
       </div>
       {addingItem && <AddTask close={addTask} addItem={props.addItem} type={props.tabName.toLowerCase()}/>}
+      {editingItem && <EditTask close={editTask} item={itemEdited} items={items}/>}
     </div>
   )
 }
