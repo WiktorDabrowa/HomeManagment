@@ -52,8 +52,8 @@ export default function Tab(props) {
           </div>
         </div>
       </div>
-      {addingItem && <AddTask close={addTask} addItem={props.addItem} type={props.tabName.toLowerCase()}/>}
-      {editingItem && <EditTask close={editTask} item={itemEdited} items={items}/>}
+      {addingItem && <AddTask state={addingItem} close={addTask} addItem={props.addItem} type={props.tabName.toLowerCase()}/>}
+      {editingItem && <EditTask state={editingItem} close={editTask} item={itemEdited} items={items}/>}
     </div>
   )
 }

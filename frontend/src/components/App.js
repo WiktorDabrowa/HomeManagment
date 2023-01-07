@@ -3,6 +3,7 @@ import Nav from './Nav'
 import ShoppingList from './ShoppingList'
 import Tab from './GenericTab'
 import HandyMenu from './HandyMenu'
+import Home from './Home'
 
 
 export default function App() {
@@ -76,14 +77,14 @@ export default function App() {
       <Nav shown = {shown} show={handleShown}/>
       <div className='app--main'>
         <div className='app--left'>
-          {shown === 'Home' && <div>Home</div>}
+          {shown === 'Home' && <Home />}
           {shown === 'Shopping' && <ShoppingList deleteSelected={deleteSelected} addItem={addItem}/>}
           {shown === 'Homework' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Homework' />}
           {shown === 'Bills' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Bills' />}
           {shown === 'Plans' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Plans' />}
           {shown === 'Other' && <Tab deleteItem={deleteItem} addItem={addItem} tabName='Other' />}
           </div>
-        <HandyMenu deleteItem={deleteItem}/>
+        { shown !== 'Home' && <HandyMenu deleteItem={deleteItem}/>}
       </div>
     </div>
   )

@@ -12,7 +12,7 @@ export default function HandyMenu(props) {
       for (let i = 0 ; i<items.length ; i++) {
         let deadline = items[i].deadline
         if (items[i].deadline) {
-          items[i].deadline = new Date(deadline.slice(0,4), deadline.slice(5,7), deadline.slice(7,10))
+          items[i].deadline = new Date(deadline.slice(0,4), deadline.slice(5,7)-1, deadline.slice(8,10))
         } else {
           items[i].deadline = 0
         }

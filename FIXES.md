@@ -3,10 +3,8 @@
 # Lazy loading
 Web Dev Simplified
 
-# Generic Tab 
-  - EDIT TASK
-# EditTask
-  - wrong date is being displayed
+# AddTask EditTask:
+  - fix hide animation
 
 # Home Tab
   - Greetings, statistics, closing deadlines

@@ -3,10 +3,9 @@ import React from 'react'
 export default function FlipCard(props) {
   const today = new Date()
   let deadline = (props.item.deadline ? props.item.deadline : 0 )
-  
 
   if (deadline) {
-    deadline = new Date(deadline.slice(0,4), deadline.slice(5,7), deadline.slice(7,10))
+    deadline = new Date(deadline.slice(0,4), deadline.slice(5,7)-1, deadline.slice(8,10))
 
   } 
 
