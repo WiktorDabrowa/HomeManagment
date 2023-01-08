@@ -311,14 +311,14 @@ code {
     border:1px solid black;
     position:fixed;
     z-index: 1;
+    transform:scale(2);
     left:calc(40vw - 150px);
     top:calc(50vh - 100px);
     transition:1s;
-    transform:scale(0.2);
-    animation: addTaskAppear 1s forwards, addTaskDisappear 1s forwards paused
+    animation: addTaskAppear 1s 1
   }
-  .addTask--container.inactive{
-    transform:scale(0.2)
+  .addTask--container.active {
+    transform: scale(2)
   }
   .addTask--form {
     display:flex;

@@ -9,10 +9,10 @@ export default function AddTask(props) {
   })
   function combine() {
     hide()
-    props.close()
-    console.log(document.querySelector('.addTask--container'))
+    setTimeout(props.close, 0.25*1000)
   }
   function hide() {
+    document.querySelector('.addTask--container').style.transform = 'translateX(5000px) scale(0.1)'
   }
 
   function change(event) {

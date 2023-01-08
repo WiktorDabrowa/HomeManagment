@@ -34,12 +34,19 @@ export default function EditTask(props) {
     .then(res => res.json())
     .then(response => console.log(response))
   }
-  
+  function combine() {
+    hide()
+    setTimeout(props.close, 0.25*1000)
+  }
+  function hide() {
+    document.querySelector('.addTask--container').style.transform = 'translateX(5000px) scale(0.1)'
+  }
+
   console.log(data)
   console.log(data.deadline)
   return (
     <div className='addTask--container tab--task'>
-       <button onClick={props.close} className='addTask--container-close-btn'>X</button>
+       <button onClick={combine} className='addTask--container-close-btn'>X</button>
        <form onSubmit={(event) => props.addItem(event,data)} onChange={change} className='addTask--form'>
          <input required value={data.name} name='name' type='text' placeholder='Name' />
          <input disabled value={data.type.slice(0,1).toUpperCase() + data.type.slice(1)} />

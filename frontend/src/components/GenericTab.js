@@ -41,7 +41,7 @@ export default function Tab(props) {
 
   return(
     <div>
-      <div onClick={addingItem ? addTask : ''} className={addingItem ? 'tab--container blur' : 'tab--container'}>
+      <div onClick={addingItem ? addTask : ''} className={addingItem || editingItem ? 'tab--container blur' : 'tab--container'}>
         {elements}
         <div onClick={addTask} className='tab--task tab--task-add'>
           <div className='tab--task-add-text'>
