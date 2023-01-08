@@ -16,12 +16,19 @@ def getRoutes(request):
     'Homework':'/tasks/homework',
     'Plans':'/tasks/plans',
     'Other':'/tasks/other',
-    'Single Task':'task/{task id}'
+    'Single Task':'/task/{task id}',
+    'All Tasks':'tasks'
   }
   return Response(routes)
-@api_view(['POST'])
-def editTask(request, id):
-  print(id)
+# Get All tasks
+@api_view(['GET'])
+def getAllTasks(request):
+  tasks = Task.objects.all()
+  serializer = TaskSerializer(tasks, many=True)
+  return Response(serializer.data)
+
+# Get tasks with closest deadlines excluding tasks
+# without a deadline
 @api_view(['GET'])
 def getClosestTasks(request):
   tasks = Task.objects.all().exclude(deadline = None).order_by('deadline')
@@ -30,12 +37,14 @@ def getClosestTasks(request):
   print(tasks)
   return Response(serializer.data)
   
+# Get Tasks of particular type
 @api_view(['GET'])
 def getTasks(request, type):
   tasks = Task.objects.filter(type=type)
   serializer = TaskSerializer(tasks, many=True)
   return Response(serializer.data)
 
+# Get or update single task
 @api_view(['GET', 'PUT'])
 def getTask(request,id):
   if request.method == 'GET':
@@ -56,7 +65,7 @@ def getTask(request,id):
       return Response(f'item {id} edited')
     return Response(serializer.errors)
     
-
+# Delete task
 @api_view(['DELETE'])
 def deleteTask(request,id):
   print(id)
@@ -64,6 +73,7 @@ def deleteTask(request,id):
   task.delete()
   return Response(f'Task {id} deleted')
 
+# Add task
 @api_view(['POST'])
 def addTask(request):
   data = json.loads(request.body)

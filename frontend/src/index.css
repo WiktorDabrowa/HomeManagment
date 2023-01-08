@@ -17,6 +17,13 @@
   from{tranform:scale(2)}
   to{transform:scale(0.2)}
 }
+@keyframes greetings {
+  0% {transform:rotate(0)}
+  25% {transform:rotate(10deg)}
+  50% {transform:rotate(0)}
+  75%{transform:rotate(-15deg)}
+  100%{transform:rotate(0)}
+}
 
 body {
   margin: 0;
@@ -468,30 +475,29 @@ code {
   .home--container{
     display:grid;
     grid-template-columns: 2fr 1fr 1fr;
-    grid-auto-rows: 200px;
-    margin:20px;
-    gap:10px;
-    transition:1s
-    
+    grid-template-rows: 100px;
+    grid-auto-rows: 200px; 
+    margin:40px;
+    gap:5px;
+    transition:1s;
   }
   .home--container>div{
     display:flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition:1s;
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+    padding:20px;
     transition:1s
   }
-  .home--container:hover{
-    gap:0
-  }
-  .home--container:hover>div{
-    z-index:2;
-    opacity:0.4
+  .home--container>div>h2 {
+    margin-top:0;
+    letter-spacing: 10px;
   }
   .home--container>div:hover{
-    transform:scale(1.2) rotate(0deg);
-    z-index:3;
-    opacity:1
-    
+    cursor:default;
   }
   .home--container>div:nth-child(even){
     background-color: aquamarine;
@@ -499,16 +505,45 @@ code {
   }
   .home--container>div:nth-child(odd){
     background-color: lightsalmon;
-    border:1px solid black
+    border:1px solid black;
+
   }
   .home--container>div:nth-child(1){
     grid-column-start:1;
-    grid-column-end:3
+    grid-column-end:3;
+    align-items: center;
+    justify-content: center;
   }
   .home--container>div:nth-child(2){
-    grid-row-start:2;
+    grid-row-start:3;
     grid-row-end:5;
     grid-column-start:3;
-    grid-column-end:4
-
+    grid-column-end:4;
+    justify-content:flex-start;
+  }
+  .home--container>div:nth-child(3){
+    grid-column-start: 3;
+    grid-column-end:4;
+    grid-row-start:1;
+    grid-row-end:3
+  }
+  .home--container>div:nth-child(5){
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start:2;
+    grid-row-end:4;
+  
+  }
+  .home--greetings{
+    font-size:60px;
+    letter-spacing: 30px;
+    align-items: center;
+    transition:1s
+  }
+  .home--greetings>p {
+    animation:greetings 5s infinite linear
+  }
+  .home--item{
+    margin:2px;
+    white-space: nowrap;
   }
