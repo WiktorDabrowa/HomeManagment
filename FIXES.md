@@ -3,9 +3,6 @@
 # Lazy loading
   - Web Dev Simplified
 
-# EditTask
-  - crash when task has no deadline
-
 # Home Tab
   - statistics ?
 

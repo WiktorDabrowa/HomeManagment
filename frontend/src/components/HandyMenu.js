@@ -28,7 +28,7 @@ export default function HandyMenu(props) {
   const elements = tasks.map(item => {
     return (
     <div className={ today < item.deadline ? 'handy--closest-item' : 'handy--closest-item redBg'}>
-      <strong>{item.deadline !=0 ? `${item.deadline.getDate()}/${item.deadline.getMonth()+1}/${item.deadline.getFullYear()}` : 'No deadline'}</strong>
+      <strong>{item.deadline !== 0 ? `${item.deadline.getDate()}/${item.deadline.getMonth()+1}/${item.deadline.getFullYear()}` : 'No deadline'}</strong>
       <span className='handy--closest-type'>{item.type.slice(0,1).toUpperCase() + item.type.slice(1)}</span>
       <br />
       {item.name} 

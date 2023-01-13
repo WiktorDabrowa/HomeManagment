@@ -6,7 +6,7 @@ export default function Nav(props) {
     return (
       <div onClick={props.show} 
           id={tab} 
-          className={props.shown == tab ? 'nav--item-container shown' : 'nav--item-container'}>
+          className={props.shown === tab ? 'nav--item-container shown' : 'nav--item-container'}>
 
         <h4>{tab}</h4>
       </div> 

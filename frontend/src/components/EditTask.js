@@ -10,7 +10,7 @@ export default function EditTask(props) {
   const [data,setData] = React.useState({
     name:item.name,
     type:item.type,
-    deadline:item.deadline.slice(0,10),
+    deadline:item.deadline ? item.deadline.slice(0,10): null,
     notes:item.notes
   })
   function change(event) {
@@ -50,7 +50,7 @@ export default function EditTask(props) {
        <form onSubmit={(event) => props.addItem(event,data)} onChange={change} className='addTask--form'>
          <input required value={data.name} name='name' type='text' placeholder='Name' />
          <input disabled value={data.type.slice(0,1).toUpperCase() + data.type.slice(1)} />
-         <input value={data.deadline.slice(0,10)} name='deadline' type='date'/>
+         <input value={ data.deadline === null ? null : data.deadline.slice(0,10)} name='deadline' type='date'/>
          <textarea value={data.notes} name='notes' placeholder='Notes' />
          <button onClick={editItem}className='addTask--form-btn'>
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
