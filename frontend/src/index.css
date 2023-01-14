@@ -1,6 +1,12 @@
 :root{
   --notes:rgba(255, 228, 196, 0.5);
 }
+@keyframes blink {
+  from {border:1px solid transparent}
+  to {border:1px solid red;
+      box-shadow: 0px 0px 3px red;  
+  }
+}
 @keyframes flipcard {
   from {transform:rotateY(0)}
   to {transform:rotateY(180deg)}
@@ -38,7 +44,9 @@ pre{
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif
 }
-
+.blink{
+  animation:blink infinite 1s alternate
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -475,8 +483,8 @@ code {
   .home--container{
     display:grid;
     grid-template-columns: 2fr 1fr 1fr;
-    grid-template-rows: 100px;
-    grid-auto-rows: 200px; 
+    grid-template-rows: 120px;
+    grid-auto-rows: 220px; 
     margin:40px;
     gap:5px;
     transition:1s;
@@ -532,7 +540,10 @@ code {
     grid-column-end: 3;
     grid-row-start:2;
     grid-row-end:4;
-  
+  }
+  .home--container>div:nth-child(7){
+    grid-column-start: 1;
+    grid-column-end:3
   }
   .home--greetings{
     font-size:60px;

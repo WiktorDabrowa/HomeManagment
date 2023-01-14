@@ -7,5 +7,4 @@
   - statistics ?
 
 # Handymenu
-  - Add task
   - calendar
