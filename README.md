@@ -8,3 +8,6 @@ This web app behaves like a To-do app. Lets you create, read, delete and update 
 
 ## Issues 
 The app is fully functional however it is not really optimized. Later into development I realized I could have had the frontend hit the backend fewer times with it`s requests. As of now the DB is hit on every tab change and also 6 seperate times on first load.
+
+## Issues 
+The app is fully functional however it is not really optimized. Later into development I realized I could have had the frontend hit the backend fewer times with it`s requests. As of now the DB is hit on every tab change and also 6 seperate times on first load.
