@@ -10,7 +10,7 @@ export default function App() {
   // State:
   
   // State and function describing which section to display
-  const[shown,setShown] = React.useState('')
+  const[shown,setShown] = React.useState('Home')
   
   // Local Storage:
     
