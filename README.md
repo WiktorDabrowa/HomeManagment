@@ -27,4 +27,5 @@ Web app will be available at 127.0.0.1:8000
 
 
 ## Issues 
-The app is fully functional however it is not really optimized. Later into development I realized I could have had the frontend hit the backend fewer times with it`s requests. As of now the DB is hit on every tab change and also 6 seperate times on first load
+The app is fully functional however it is not really optimized. Later into development I realized I could have had the frontend hit the backend fewer times with it`s requests. As of now the DB is hit on every tab change and also 6 seperate times on first load.
+

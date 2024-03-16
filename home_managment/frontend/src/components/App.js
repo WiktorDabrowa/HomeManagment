@@ -49,16 +49,21 @@ export default function App() {
       }
       // Delete item set from db
       async function deleteSelected(items) {
-        items.forEach(item => {
+        let promises = []
+        for await (const item of items) {
           const requestOptions = {
             method: 'DELETE',
             body: item
           }
-          fetch(`http://127.0.0.1:8000/api/task/delete/${item}`, requestOptions)
-          .then(res => res.json())
-          .then(data => console.log(data))
-        document.location.reload()
-        })
+          promises.push(
+            fetch(`http://127.0.0.1:8000/api/task/delete/${item}`, requestOptions)
+            .then(res => res.json())
+            .then(data => console.log(data))
+          );
+        };
+        Promise.all(promises).then(
+          () => document.location.reload()
+        )
       }
       // Delete one item from db
       async function deleteItem(item_id) {

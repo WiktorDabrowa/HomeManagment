@@ -5,7 +5,6 @@ export default function ShoppingList(props) {
   const [shoppingListItems,setShoppingListItems] = React.useState([])
   const [selected,setSelected] = React.useState(new Set())
 
-  console.log(props)
   function select(event) {
     setSelected(prevSelected => {
       let state = new Set([...prevSelected])
@@ -14,7 +13,6 @@ export default function ShoppingList(props) {
       } else {
         state.add(event.target.name)
       }
-      console.log(state)
       return(state)
     })
   }
@@ -24,7 +22,6 @@ export default function ShoppingList(props) {
     .then(items => setShoppingListItems(items))
     console.log('got items')
   },[])
-  console.log(shoppingListItems)
 
   const shoppingItems = shoppingListItems.map(item => {
     return (
@@ -44,7 +41,7 @@ export default function ShoppingList(props) {
       </div>
     )
   })
-  console.log(props)
+
   return (
     <div className='shopping--container'>
       {shoppingItems}
