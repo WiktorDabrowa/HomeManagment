@@ -20,7 +20,6 @@ export default function EditTask(props) {
     })
   }
   async function editItem(e){
-    console.log(data)
     e.preventDefault()
     console.log('editing')
     console.log(e)
@@ -34,7 +33,7 @@ export default function EditTask(props) {
     fetch(`api/task/${item.id}/edit`, requestOptions)
     .then(res => res.json())
     .then(response => console.log(response))
-    //.then(() => {document.location.reload()})
+    .then(() => {document.location.reload()})
   }
 
   function combine() {

@@ -30,9 +30,7 @@ export default function App() {
 
       // Adding an item to DB
       async function addItem(event, data){
-        console.log(data)
         event.preventDefault()
-        console.log(event)
         const requestOptions = {
           method: 'POST',
           headers: {
@@ -43,7 +41,7 @@ export default function App() {
         fetch('http://127.0.0.1:8000/api/task/add', requestOptions)
         .then(res => res.json())
         .then(response => console.log(response))
-        //.then(() => {document.location.reload()})
+        .then(() => {document.location.reload()})
       }
       // Show Tab
       function handleShown(event) {
@@ -64,7 +62,6 @@ export default function App() {
       }
       // Delete one item from db
       async function deleteItem(item_id) {
-        console.log("deleting item")
         const requestOptions = {
           method: 'DELETE',
           body: item_id
